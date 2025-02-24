@@ -9,8 +9,6 @@ import expressiveCode from 'astro-expressive-code'
 import { expressiveCodeOptions } from './src/site.config'
 import icon from 'astro-icon'
 
-import vercel from '@astrojs/vercel/serverless'
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.me',
@@ -30,7 +28,7 @@ export default defineConfig({
 				rehypeExternalLinks,
 				{
 					target: '_blank',
-					rel: ['nofollow, noopener, noreferrer']
+					rel: ['nofollow', 'noopener', 'noreferrer']
 				}
 			]
 		],
@@ -41,11 +39,5 @@ export default defineConfig({
 		}
 	},
 	prefetch: true,
-	output: 'hybrid',
-	build: {
-		outDir: 'dist', 
-	},
-	adapter: vercel({
-		webAnalytics: { enabled: true }
-	})
+	output: 'static' // ✅ Garde en mode "static" pour Netlify
 })
